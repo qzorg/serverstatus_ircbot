@@ -5,7 +5,7 @@ import re
 from sysutils import collect
 
 def get_help(text):
-    output=["COMMAND USAGE: !servinfo [--a,$HOST]  --c[COMMAND,COMMAND,...]","COMMANDS availible: ", "mem   get memory info","cpu   get CPU info","hdd  get hdd info"]
+    output=["COMMAND USAGE: !servinfo [--a,$HOST]  --c[COMMAND,COMMAND,...]","COMMANDS availible: ", "mem   get memory info","cpu   get CPU info","hdd  get hdd info","kernel   get kernel version","uptime   get system uptime","ip  get ip address"]
     return output
 def get_output(commandlets_list):
     output=[]
