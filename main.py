@@ -24,13 +24,16 @@ while 1:    #puts it in a loop
     if text.find('PING') != -1:                          #check if 'PING' is found
         irc.send('PONG ' + text.split() [1] + '\r\n') #returnes 'PONG' back to the server (prevents pinging out!)
     if "PRIVMSG" in text and config.botconf['channel'] in text and ":!servinfo" in text:
-        if contains_word(text, config.botconf['botnick']) or contains_word(text, "--a"):
+        if contains_word(text, config.botconf['botnick']) or text.find(".all") != -1:
             output = find_command(text)
             for msg in output:
                 sendmsg(msg)
-    
-        else:
-            print "false alarm" 
+        elif text.find(".help") != -1:
+            output = get_help(text)
+            for msg in output:
+                sendmsg(msg)
+        
+       
     else:
         pass
 

@@ -10,7 +10,7 @@ def get_hddfull():
     hddfull = subprocess.check_output("df -k .", shell=True)
     return hddfull
 def collect(command):
-
+    
     if "mem" in command:
         return get_memusage()
     elif "cpu" in command:
