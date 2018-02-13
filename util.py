@@ -12,6 +12,7 @@ def get_output(commandlets_list):
     for command in commandlets_list:
         collected = collect(command)
         output.append(collected)
+
     return output
 def make_returnlist(commandlets):
     commandlets_list = commandlets.split(',')
@@ -19,12 +20,21 @@ def make_returnlist(commandlets):
     
 def contains_word(text, word):
    return bool(re.search(r'\b' + re.escape(word) + r'\b', text))
+def remove_spaces(commandlets_list):
+    temp = []
+    for commandlet in commandlets_list:
+        commandlet = commandlet.strip()
+        
+        temp.append(commandlet)
+    return temp
+
 
 def find_command(text):
     index = text.find('--c')
     if index > 0:
         commandlets=text[index+3:]
         commandlets_list = make_returnlist(commandlets)
+        commandlets_list = remove_spaces(commandlets_list)
         output = get_output(commandlets_list)
         return output
     else:

@@ -18,21 +18,16 @@ def get_uptime():
 def get_ipaddr():
     ip = subprocess.check_output("hostname -I", shell=True)
     return ip
-def collect(command):
-    
-    if "mem" in command:
-        return get_memusage()
-    elif "cpu" in command:
-        return get_cpuusage()
-    elif "hdd" in command:
-        return get_hddfull()
-    elif "kernel" in command:
-        return get_kernelinfo()
-    elif "uptime" in command:
-        return get_uptime()
-    elif "ip" in command:
-        return get_ipaddr()
-    else:
-        return "not a command"
 
+def collect(command):
+    options = {
+        "mem": get_memusage(),
+        "cpu": get_cpuusage(),
+        "hdd": get_hddfull(),
+        "kernel": get_kernelinfo(),
+        "uptime": get_uptime(),
+        "ip": get_ipaddr(),
+    }
+
+    return options.get(command, "no such command")
 
